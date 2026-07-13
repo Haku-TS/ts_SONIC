@@ -46,24 +46,24 @@ while [ ! -f "$READY_FILE_1" ]; do
     sleep 5
 done
 echo "Terminal-1 is ready."
-
-
-# ==========================================
-# 2. 打开 terminal-2 执行视频推流
-# ==========================================
-echo "--> Opening Terminal-2..."
-
-gnome-terminal --title="Terminal-2-Video-Sender" -- bash -c "expect -c '
-    set timeout -1
-    spawn ssh ${ROBOT_USER}@${ROBOT_IP}
-    expect {
-        \"*yes/no*\" { send \"yes\r\"; exp_continue }
-        \"*password:*\" { send \"${ROBOT_PASS}\r\" }
-    }
-    expect \"*@*\"
-    send \"cd ~/techshare_ws/ts-XRoboToolkit-Orin-Video-Sender/ && ./OrinVideoSender --send --server ${VR_IP} --port 12345 --camera stereo\r\"
-    interact
-'" &
+#
+#
+## ==========================================
+## 2. 打开 terminal-2 执行视频推流
+## ==========================================
+#echo "--> Opening Terminal-2..."
+#
+#gnome-terminal --title="Terminal-2-Video-Sender" -- bash -c "expect -c '
+#    set timeout -1
+#    spawn ssh ${ROBOT_USER}@${ROBOT_IP}
+#    expect {
+#        \"*yes/no*\" { send \"yes\r\"; exp_continue }
+#        \"*password:*\" { send \"${ROBOT_PASS}\r\" }
+#    }
+#    expect \"*@*\"
+#    send \"cd ~/techshare_ws/ts-XRoboToolkit-Orin-Video-Sender/ && ./OrinVideoSender --send --server ${VR_IP} --port 12345 --camera stereo\r\"
+#    interact
+#'" &
 
 # ==========================================
 # 3. 打开 terminal-3 自动处理密码、Y、Init Done
